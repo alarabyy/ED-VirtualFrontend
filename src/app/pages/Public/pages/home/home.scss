@@ -11,16 +11,16 @@ $border-color: rgba(255, 255, 255, 0.08);
 
 :host {
   display: block;
-  font-family: 'Inter', sans-serif; // Clean text
+  font-family: 'Inter', sans-serif;
   background-color: $bg-color;
   color: $text-primary;
   overflow-x: hidden;
   direction: ltr;
 }
 
-// Global Headers Font
-h1, h2, h3, .badge, .btn-primary, .btn-secondary, .partner-logo {
-  font-family: 'Rajdhani', sans-serif; // Tech/Gaming font
+// Global Fonts
+h1, h2, h3, .badge, .btn-primary, .btn-secondary, .partner-logo, .step-num {
+  font-family: 'Rajdhani', sans-serif;
   text-transform: uppercase;
 }
 
@@ -40,7 +40,7 @@ h1, h2, h3, .badge, .btn-primary, .btn-secondary, .partner-logo {
   padding: 2rem;
   overflow: hidden;
 
-  // Cyber Grid Background
+  // Background Grid
   background-image: 
     linear-gradient(rgba($accent-cyan, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba($accent-cyan, 0.03) 1px, transparent 1px);
@@ -48,8 +48,8 @@ h1, h2, h3, .badge, .btn-primary, .btn-secondary, .partner-logo {
 
   .hero-bg-overlay {
     position: absolute;
-    width: 100%; height: 100%;
-    background: radial-gradient(circle at center, rgba($accent-purple, 0.1) 0%, transparent 70%);
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at center, rgba($accent-purple, 0.15) 0%, transparent 70%);
   }
 
   .content-wrapper {
@@ -79,12 +79,14 @@ h1, h2, h3, .badge, .btn-primary, .btn-secondary, .partner-logo {
     font-weight: 700;
     letter-spacing: 1px;
     font-size: 0.8rem;
+    display: inline-block;
+    margin-bottom: 1rem;
   }
 
   h1 {
     font-size: 5rem;
     line-height: 0.95;
-    margin: 1.5rem 0;
+    margin: 0.5rem 0 1.5rem;
     font-weight: 700;
 
     .gradient-text {
@@ -115,7 +117,7 @@ h1, h2, h3, .badge, .btn-primary, .btn-secondary, .partner-logo {
     letter-spacing: 1px;
     cursor: pointer;
     transition: 0.3s;
-    border-radius: 2px; // Sharp edges for tech feel
+    border-radius: 4px;
     
     &:active { transform: scale(0.98); }
   }
@@ -135,7 +137,7 @@ h1, h2, h3, .badge, .btn-primary, .btn-secondary, .partner-logo {
   }
 }
 
-// --- 3D Visual (Cube) ---
+// --- 3D Visual ---
 .hero-visual {
   flex: 1;
   display: flex;
@@ -213,6 +215,7 @@ h1, h2, h3, .badge, .btn-primary, .btn-secondary, .partner-logo {
     text-align: center;
     margin-bottom: 4rem;
     opacity: 0;
+    transform: translateY(20px);
     transition: 0.6s;
     
     h2 { font-size: 3rem; margin-bottom: 0.5rem; }
@@ -222,7 +225,7 @@ h1, h2, h3, .badge, .btn-primary, .btn-secondary, .partner-logo {
 
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
 }
 
@@ -238,7 +241,6 @@ h1, h2, h3, .badge, .btn-primary, .btn-secondary, .partner-logo {
   &:hover {
     border-color: $accent-purple;
     transform: translateY(-5px) !important;
-    
     .icon-box { color: $accent-purple; transform: scale(1.1); }
   }
 
@@ -247,6 +249,8 @@ h1, h2, h3, .badge, .btn-primary, .btn-secondary, .partner-logo {
     color: $text-secondary;
     margin-bottom: 1.5rem;
     transition: 0.3s;
+    
+    svg { width: 100%; height: 100%; }
   }
 
   h3 { font-size: 1.5rem; margin-bottom: 1rem; }
@@ -258,6 +262,7 @@ h1, h2, h3, .badge, .btn-primary, .btn-secondary, .partner-logo {
   padding: 6rem 2rem;
   background: #000;
   opacity: 0;
+  transform: translateY(30px);
   transition: 0.8s;
 
   .transform-grid {
@@ -273,117 +278,150 @@ h1, h2, h3, .badge, .btn-primary, .btn-secondary, .partner-logo {
   .highlight { color: $accent-cyan; }
 }
 
-.steps-list li {
-  display: flex;
-  gap: 1.5rem;
-  margin-bottom: 2.5rem;
-
-  .step-num {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 1.5rem;
-    color: rgba(255,255,255,0.1);
-    font-weight: 700;
-  }
+.steps-list {
+  list-style: none; padding: 0;
   
-  h4 { color: $text-primary; margin-bottom: 0.3rem; font-size: 1.2rem; }
-  p { color: $text-secondary; font-size: 0.95rem; }
+  li {
+    display: flex; gap: 1.5rem; margin-bottom: 2.5rem;
+    
+    .step-num { font-size: 1.5rem; color: rgba(255,255,255,0.1); font-weight: 700; }
+    h4 { color: $text-primary; margin: 0 0 0.3rem 0; font-size: 1.2rem; }
+    p { color: $text-secondary; font-size: 0.95rem; margin: 0; }
+  }
 }
 
 .scanner-effect {
-  height: 400px;
-  width: 100%;
+  height: 400px; width: 100%;
   border: 1px dashed $border-color;
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: flex; justify-content: center; align-items: center;
+  background: rgba(255,255,255,0.02);
 
-  .doc-icon { font-size: 4rem; font-weight: 900; color: #222; }
+  .doc-icon { font-size: 4rem; font-weight: 900; color: #222; font-family: 'Rajdhani', sans-serif; }
   .scan-line {
-    position: absolute; width: 100%; height: 2px;
+    position: absolute; top: 0; width: 100%; height: 2px;
     background: $accent-cyan;
     box-shadow: 0 0 20px $accent-cyan;
-    animation: scan 2.5s ease-in-out infinite;
+    animation: scan 3s ease-in-out infinite;
   }
 }
 @keyframes scan { 0%,100%{top:0;opacity:0} 10%,90%{opacity:1} 50%{top:100%} }
 
-// --- PARTNERS / ADS SECTION ---
+// --- PARTNERS SECTION ---
 .partners-section {
   padding: 8rem 2rem 4rem;
   background: linear-gradient(to top, #000, $bg-color);
   text-align: center;
   opacity: 0;
+  transform: translateY(30px);
   transition: 0.8s;
 
   .ad-badge {
-    display: inline-block;
-    color: $accent-purple;
+    display: inline-block; color: $accent-purple;
     border: 1px solid $accent-purple;
     padding: 0.2rem 0.8rem;
-    font-size: 0.75rem;
-    letter-spacing: 2px;
-    margin-bottom: 1rem;
+    font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 1rem;
   }
 
   h2 { font-size: 2.5rem; margin-bottom: 0.5rem; }
   p { color: $text-secondary; margin-bottom: 4rem; }
 
   .partners-grid {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 3rem;
-    margin-bottom: 6rem;
+    display: flex; justify-content: center; flex-wrap: wrap;
+    gap: 3rem; margin-bottom: 6rem;
 
     .partner-logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #333;
-      transition: 0.3s;
-      cursor: default;
-
+      font-size: 1.2rem; font-weight: 700; color: #333;
+      transition: 0.3s; cursor: default;
       &:hover { color: $text-primary; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
     }
   }
 
   .btn-glow {
     background: linear-gradient(90deg, $accent-purple, $accent-cyan);
-    border: none;
-    padding: 1rem 4rem;
-    color: white;
-    font-weight: 700;
-    border-radius: 50px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    box-shadow: 0 10px 30px rgba($accent-purple, 0.3);
+    border: none; padding: 1rem 4rem; color: white;
+    font-weight: 700; border-radius: 50px; font-size: 1.1rem;
+    cursor: pointer; box-shadow: 0 10px 30px rgba($accent-purple, 0.3);
     transition: 0.3s;
-
     &:hover { transform: scale(1.05); box-shadow: 0 15px 40px rgba($accent-purple, 0.5); }
   }
 }
 
-// --- MOBILE RESPONSIVENESS ---
+// ==========================================
+// --- MOBILE RESPONSIVENESS (The Key Part) ---
+// ==========================================
+
+@media (max-width: 992px) {
+  // Tablet adjustments
+  .hero-text h1 { font-size: 4rem; }
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
 @media (max-width: 768px) {
+  // --- Hero Section Mobile ---
   .hero-section {
-    flex-direction: column;
-    text-align: center;
     padding-top: 6rem;
-    
-    .content-wrapper { flex-direction: column-reverse; }
-    
-    h1 { font-size: 3rem; } // Smaller headline on mobile
-    p { margin: 0 auto 2rem; }
-    
-    .cta-group { justify-content: center; width: 100%; }
-    .btn-primary, .btn-secondary { width: 100%; } // Full width buttons
+    min-height: auto; // Remove fixed height
+    padding-bottom: 4rem;
+
+    .content-wrapper {
+      flex-direction: column; // Stack elements
+      text-align: center;
+      gap: 3rem;
+    }
+
+    .hero-text {
+      h1 { font-size: 3rem; line-height: 1.1; }
+      p { font-size: 1rem; margin: 0 auto 2rem; }
+      
+      .cta-group {
+        justify-content: center;
+        flex-direction: column; // Stack buttons
+        width: 100%;
+        
+        button { width: 100%; } // Full width buttons
+      }
+    }
+
+    .hero-visual {
+      transform: scale(0.8); // Smaller cube
+      margin-top: 1rem;
+    }
   }
 
-  .transform-grid {
-    grid-template-columns: 1fr; // Stack columns
+  // --- Features Mobile ---
+  .features-section {
+    padding: 4rem 1.5rem;
     
-    .visual-side { order: -1; margin-bottom: 2rem; } // Show visual first
+    .section-header h2 { font-size: 2.2rem; }
+    
+    .cards-grid {
+      grid-template-columns: 1fr; // Single column
+    }
   }
 
-  .partners-grid { gap: 1.5rem; flex-direction: column; }
+  // --- Transform Section Mobile ---
+  .transform-section {
+    padding: 4rem 1.5rem;
+
+    .transform-grid {
+      grid-template-columns: 1fr; // Stack side by side
+      gap: 3rem;
+      
+      // Visual first on mobile looks better for engagement
+      .visual-side { order: -1; }
+    }
+
+    h2 { font-size: 2.2rem; text-align: center; }
+    .scanner-effect { height: 300px; } // Shorter scanner
+  }
+
+  // --- Partners Mobile ---
+  .partners-section {
+    padding: 4rem 1.5rem;
+
+    h2 { font-size: 2rem; }
+    .partners-grid { gap: 1.5rem; flex-direction: column; }
+    .btn-glow { width: 100%; padding: 1rem; }
+  }
 }

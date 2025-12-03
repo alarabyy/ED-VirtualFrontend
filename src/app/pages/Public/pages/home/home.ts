@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChildren, QueryList, AfterViewInit, PLATFORM_ID, inject } from '@angular/core';
+import { Component, ElementRef, ViewChildren, QueryList, AfterViewInit, inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
@@ -7,14 +7,13 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './home.html',
-  styleUrls: ['./home.scss'],
+  styleUrls: ['./home.scss']
 })
-export class Home implements OnInit, AfterViewInit {
+export class HomeComponent implements AfterViewInit {
   private platformId = inject(PLATFORM_ID);
   
   @ViewChildren('animItem') animatedItems!: QueryList<ElementRef>;
 
-  // Feature Data in English
   features = [
     {
       title: 'True VR Immersion',
@@ -34,12 +33,8 @@ export class Home implements OnInit, AfterViewInit {
   ];
 
   partners = [
-    'POWERED BY UNITY', 'UNREAL ENGINE 5', 'META QUEST', 'APPLE VISION PRO', 'NVIDIA RTX'
+    'UNITY TECHNOLOGIES', 'UNREAL ENGINE', 'META QUEST', 'APPLE VISION PRO', 'HTC VIVE'
   ];
-
-  constructor() {}
-
-  ngOnInit(): void {}
 
   ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId)) {

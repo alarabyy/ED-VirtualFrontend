@@ -15,7 +15,7 @@ export const routes: Routes = [
       // --- General Pages ---
       {
         path: '',
-        loadComponent: () => import('./pages/Public/pages/home/home').then(m => m.Home)
+        loadComponent: () => import('./pages/Public/pages/home/home').then(m => m.HomeComponent)
       },
       {
         path: 'about',
