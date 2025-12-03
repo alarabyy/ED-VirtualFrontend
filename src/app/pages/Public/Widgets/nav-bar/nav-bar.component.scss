@@ -1,17 +1,35 @@
-// متغيرات الألوان
-$bg-color: #000;
-$text-color: #fff;
-$hover-color: #aaa;
-$divider-color: #333;
-$accent-btn-bg: #fff;
-$accent-btn-text: #000;
+// --- Variables ---
+$bg-color: #050505;       // خلفية سوداء داكنة
+$bg-scrolled: rgba(5, 5, 5, 0.95);
+$text-color: #ffffff;
+$text-muted: #a0a0a0;
+$accent-gold: #FFD700;    // اللون الذهبي الأساسي
+$accent-gradient: linear-gradient(135deg, #FFD700 0%, #FDB931 100%);
+$border-color: rgba(255, 255, 255, 0.1);
+$hover-bg: rgba(255, 255, 255, 0.05);
+
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600&display=swap');
+
+:host {
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
 .nav-bar-container {
   background-color: $bg-color;
   color: $text-color;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; // خط أكثر حداثة
+  font-family: 'Inter', sans-serif;
   padding: 0 20px;
-  position: relative;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid $border-color;
+
+  &.scrolled {
+    background-color: $bg-scrolled;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  }
   
   @media (min-width: 992px) {
     padding: 0 40px;
@@ -23,101 +41,53 @@ $accent-btn-text: #000;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 0;
-  height: 70px;
+  height: 80px; // زاد الارتفاع قليلاً للفخامة
 }
 
 .mobile-toggle {
   background: none;
   border: none;
-  color: #fff;
-  font-size: 1.5rem;
+  color: $text-color;
+  font-size: 1.8rem;
   cursor: pointer;
-  display: block; // يظهر في الموبايل
+  z-index: 1001;
+  display: block;
   
-  @media (min-width: 992px) {
-    display: none; // يختفي في الشاشات الكبيرة
-  }
+  @media (min-width: 992px) { display: none; }
 }
 
 .logo {
   cursor: pointer;
   .logo-text {
-    font-size: 24px;
-    font-weight: 900;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
+    
+    .highlight { color: $accent-gold; }
   }
 }
 
-/* --- Main Links (Desktop) --- */
+/* --- Main Links (Test Links) --- */
 .main-links {
   list-style: none;
-  padding: 0;
-  margin: 0;
-  gap: 20px;
+  padding: 0; margin: 0; gap: 30px;
   
   a {
-    color: $text-color;
+    color: $text-muted;
     text-decoration: none;
-    font-size: 13px;
-    font-weight: 700;
+    font-size: 0.9rem;
+    font-weight: 600;
     text-transform: uppercase;
-    transition: color 0.3s ease;
+    transition: 0.3s;
+    letter-spacing: 1px;
     
-    &:hover, &.active {
-      color: $hover-color;
-    }
+    &:hover, &.active { color: $accent-gold; }
   }
 }
 
-/* --- Mobile Menu --- */
-.mobile-menu {
-  position: fixed; // عشان يغطي الشاشة
-  top: 70px; // تحت الهيدر بالظبط
-  left: 0;
-  width: 100%;
-  height: 0;
-  background-color: #111; // أغمق قليلاً من الخلفية
-  overflow: hidden;
-  transition: height 0.4s ease-in-out;
-  z-index: 1000;
-  
-  &.open {
-    height: calc(100vh - 70px); // يفتح لنهاية الشاشة
-  }
-
-  .mobile-links {
-    list-style: none;
-    padding: 20px;
-    margin: 0;
-    text-align: center;
-    
-    li {
-      margin-bottom: 20px;
-    }
-    
-    a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 18px;
-      font-weight: bold;
-      text-transform: uppercase;
-      display: block;
-      
-      &:hover {
-        color: #ffd700; // لون ذهبي عند اللمس
-      }
-    }
-  }
-
-  .mobile-subscribe {
-    padding: 0 20px;
-    margin-top: 20px;
-  }
-}
-
-/* --- Actions --- */
+/* --- Actions & Buttons (The Important Part) --- */
 .actions {
   display: flex;
   align-items: center;
@@ -127,91 +97,194 @@ $accent-btn-text: #000;
 .search-button {
   background: none;
   border: none;
-  color: #fff;
+  color: $text-color;
   cursor: pointer;
-  font-size: 18px;
-  transition: transform 0.2s;
+  font-size: 1.2rem;
+  opacity: 0.8;
+  transition: 0.3s;
   
+  &:hover { opacity: 1; color: $accent-gold; transform: scale(1.1); }
+}
+
+// زر تسجيل الدخول (تصميم هادئ)
+.btn-login {
+  color: $text-color;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: 0.3s;
+  font-size: 0.95rem;
+
   &:hover {
-    transform: scale(1.1);
+    color: $accent-gold;
   }
 }
 
-.subscribe-button {
-  background-color: $accent-btn-bg;
-  color: $accent-btn-text;
-  border: none;
-  padding: 8px 16px;
-  font-size: 14px;
-  font-weight: 800;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.2s ease;
+// زر إنشاء حساب (تصميم بارز واحترافي)
+.btn-signup {
+  background: $accent-gradient;
+  color: #000; // نص أسود لتباين عالي
+  text-decoration: none;
+  padding: 10px 24px;
+  border-radius: 50px; // حواف دائرية كاملة
+  font-weight: 700;
+  font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+  transition: all 0.3s ease;
+  border: none;
 
   &:hover {
-    background-color: #ddd;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+    background: #fff; // عند الهوفر يصبح أبيض
   }
 }
 
-/* --- Dividers & Date --- */
-.divider {
-  border: none;
+// عناصر المستخدم المسجل
+.user-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: rgba(255,255,255,0.05);
+  padding: 5px 15px;
+  border-radius: 30px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.profile-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: $text-color;
+  
+  .avatar-circle {
+    width: 32px; height: 32px;
+    background: $accent-gold;
+    color: #000;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+  }
+
+  .username { font-weight: 600; font-size: 0.9rem; }
+  &:hover .username { color: $accent-gold; }
+}
+
+.divider-vertical {
+  width: 1px; height: 20px;
+  background: rgba(255,255,255,0.2);
+}
+
+.btn-logout {
+  background: none; border: none;
+  color: $text-muted;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: 0.3s;
+  
+  &:hover { color: #ff4d4d; transform: rotate(90deg); }
+}
+
+/* --- Mobile Menu --- */
+.mobile-menu {
+  position: fixed;
+  top: 80px; left: 0; width: 100%; height: 0;
+  background-color: rgba(10, 10, 10, 0.98);
+  backdrop-filter: blur(15px);
+  overflow: hidden;
+  transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 999;
+  border-bottom: 1px solid $border-color;
+  
+  &.open { height: calc(100vh - 80px); }
+
+  .mobile-content {
+    display: flex; flex-direction: column;
+    justify-content: center; height: 100%;
+    padding: 2rem;
+  }
+
+  .mobile-links {
+    list-style: none; padding: 0; margin: 0; text-align: center;
+    
+    li { margin-bottom: 25px; opacity: 0; animation: fadeIn 0.5s forwards; }
+    // Stagger animation
+    @for $i from 1 through 6 { li:nth-child(#{$i}) { animation-delay: #{$i * 0.1}s; } }
+
+    a {
+      color: $text-color; text-decoration: none;
+      font-size: 1.5rem; font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; text-transform: uppercase;
+      display: block; transition: 0.3s;
+      
+      &:hover { color: $accent-gold; letter-spacing: 2px; }
+    }
+  }
+
+  .mobile-auth {
+    display: flex; gap: 15px; justify-content: center; margin-top: 2rem;
+    
+    .btn-mobile-login {
+      border: 1px solid $border-color;
+      padding: 10px 30px; border-radius: 4px;
+      font-size: 1rem;
+    }
+    .btn-mobile-signup {
+      @extend .btn-signup;
+      font-size: 1rem; padding: 12px 30px;
+    }
+  }
+}
+
+@keyframes fadeIn { to { opacity: 1; transform: translateY(0); } from { opacity: 0; transform: translateY(10px); } }
+
+/* --- Sub Links & Divider --- */
+.nav-divider {
   height: 1px;
-  background-color: $divider-color;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
   margin: 0;
 }
 
-.date-section {
-  font-size: 12px;
-  color: #888;
-  padding: 8px 0;
-  font-weight: 500;
+.date-bar {
+  text-align: center;
+  font-size: 0.75rem;
+  color: $accent-gold;
+  padding: 5px 0;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 2px;
+  opacity: 0.8;
 }
 
-/* --- Sub Links Bar (Desktop only) --- */
 .sub-links-bar {
-  padding: 12px 0;
+  padding: 10px 0 15px;
   
   .sub-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 30px;
+    list-style: none; padding: 0; margin: 0;
+    display: flex; gap: 40px; justify-content: flex-start; // Align left like prompt, or center
     
-    li {
-      position: relative;
-    }
-    
-    a {
-      color: $text-color;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 700;
-      text-transform: uppercase;
-      padding-bottom: 5px;
-      position: relative;
-      
-      // تأثير الخط تحت الكلمة
+    li a {
+      color: $text-muted; text-decoration: none;
+      font-size: 0.85rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1px;
+      position: relative; padding-bottom: 5px;
+      transition: 0.3s;
+
       &::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 2px;
-        bottom: 0;
-        left: 0;
-        background-color: #fff;
+        content: ''; position: absolute; width: 0; height: 2px;
+        bottom: 0; left: 0; background-color: $accent-gold;
         transition: width 0.3s ease;
       }
       
-      &:hover::after, &.active::after {
-        width: 100%;
-      }
+      &:hover, &.active { color: $text-color; &::after { width: 100%; } }
+    }
+
+    .highlight-link {
+      color: $accent-gold;
+      &:hover { text-shadow: 0 0 10px rgba($accent-gold, 0.5); }
     }
   }
 }

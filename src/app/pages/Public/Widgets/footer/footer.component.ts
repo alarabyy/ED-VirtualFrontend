@@ -5,7 +5,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive], 
+  imports: [CommonModule, RouterLink, RouterLinkActive],
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })

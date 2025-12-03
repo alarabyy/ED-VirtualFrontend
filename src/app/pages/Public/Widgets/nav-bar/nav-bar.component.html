@@ -1,4 +1,4 @@
-<nav class="nav-bar-container">
+<nav class="nav-bar-container" [class.scrolled]="isScrolled">
   
   <div class="top-header">
     
@@ -7,69 +7,83 @@
     </button>
 
     <div class="logo" routerLink="/">
-      <span class="logo-text">NYC360</span>
+      <span class="logo-text">ED-V<span class="highlight">360</span></span>
     </div>
 
     <ul class="main-links d-none d-lg-flex">
-      <li><a routerLink="/news" routerLinkActive="active">NEWS</a></li>
-      <li><a routerLink="/politics" routerLinkActive="active">POLITICS</a></li>
+      <li><a routerLink="/news" routerLinkActive="active">test</a></li>
+      <li><a routerLink="/politics" routerLinkActive="active">test</a></li>
     </ul>
 
     <div class="actions">
-      <button class="search-button"><i class="bi bi-search"></i></button>
       
       <ng-container *ngIf="!isLoggedIn">
-        <a routerLink="/Login" class="subscribe">Login</a>
-        <a routerLink="/Signup" class="subscribe-button">Sign Up</a>
+        <a routerLink="/Login" class="btn-login">Login</a>
+        <a routerLink="/Signup" class="btn-signup">Get Started</a>
       </ng-container>
 
-      <div class="d-flex align-items-center gap-2" *ngIf="isLoggedIn">
+      <div class="user-controls" *ngIf="isLoggedIn">
         
         <a [routerLink]="['/profile', currentUsername]" 
            class="profile-btn" 
            title="My Profile">
-          <i class="bi bi-person-circle fs-4 text-white"></i>
+          <div class="avatar-circle">
+            <i class="bi bi-person-fill"></i>
+          </div>
+          <span class="username d-none d-md-block">{{ currentUsername }}</span>
         </a>
 
-        <button (click)="logout()" class="auth-link">Logout</button>
+        <div class="divider-vertical"></div>
+
+        <button (click)="logout()" class="btn-logout" title="Logout">
+          <i class="bi bi-box-arrow-right"></i>
+        </button>
       </div>
     </div>
   </div>
 
   <div class="mobile-menu" [class.open]="isMenuOpen">
-    <ul class="mobile-links">
-      <li><a routerLink="/" (click)="toggleMenu()">HOME</a></li>
-      
-      <li *ngIf="isLoggedIn">
-        <a [routerLink]="['/profile', currentUsername]" (click)="toggleMenu()">MY PROFILE</a>
-      </li>
+    <div class="mobile-content">
+      <ul class="mobile-links">
+        <li><a routerLink="/" (click)="toggleMenu()">HOME</a></li>
+        <li><a routerLink="/about" (click)="toggleMenu()">About</a></li>
+        
+        <li *ngIf="isLoggedIn">
+          <a [routerLink]="['/profile', currentUsername]" (click)="toggleMenu()" class="highlight-item">MY PROFILE</a>
+        </li>
 
-      <li *ngIf="canViewDashboard">
-        <a routerLink="/admin/dashboard" (click)="toggleMenu()">DASHBOARD</a>
-      </li>
+        <li *ngIf="canViewDashboard">
+          <a routerLink="/admin/dashboard" (click)="toggleMenu()" class="dashboard-link">DASHBOARD</a>
+        </li>
 
-
-      <li *ngIf="!isLoggedIn"><a routerLink="/Login" (click)="toggleMenu()">LOGIN</a></li>
-      <li *ngIf="isLoggedIn"><a (click)="logout()">LOGOUT</a></li>
-    </ul>
+        <li class="mobile-auth" *ngIf="!isLoggedIn">
+          <a routerLink="/Login" (click)="toggleMenu()" class="btn-mobile-login">Login</a>
+          <a routerLink="/Signup" (click)="toggleMenu()" class="btn-mobile-signup">Sign Up</a>
+        </li>
+        
+        <li *ngIf="isLoggedIn">
+          <a (click)="logout()" class="logout-link">LOGOUT</a>
+        </li>
+      </ul>
+    </div>
   </div>
 
-  <hr class="divider top-divider">
-  <div class="date-section">{{ currentDate | date:'EEEE, MMMM d, y' }}</div>
-  <hr class="divider bottom-divider">
+  <div class="nav-divider"></div>
+  <div class="date-bar">
+    <span class="date-text">{{ currentDate | date:'EEEE, MMMM d, y' }}</span>
+  </div>
   
   <div class="sub-links-bar d-none d-md-block">
     <ul class="sub-links">
-      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">HOME</a></li>
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
+      <li><a routerLink="/about" routerLinkActive="active">About Us</a></li>
+      <!-- <li><a routerLink="/projects" routerLinkActive="active">Projects</a></li> -->
       
       <li *ngIf="canViewDashboard">
         <a routerLink="/admin/dashboard" routerLinkActive="active" class="highlight-link">
-          <i class="bi bi-speedometer2"></i> Dashboard
+          <i class="bi bi-grid-fill me-1"></i> Dashboard
         </a>
       </li>
-
-
-
     </ul>
   </div>
 

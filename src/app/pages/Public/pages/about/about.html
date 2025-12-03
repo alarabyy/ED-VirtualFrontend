@@ -1,1 +1,85 @@
-<p>about works!</p>
+<main class="about-container">
+  
+  <div class="cyber-grid-bg"></div>
+
+  <header class="about-header">
+    <div class="header-content" #animItem>
+      <h1 class="glitch" data-text="OUR VISION">OUR VISION</h1>
+      <div class="separator-line"></div>
+      <p class="subtitle">REDEFINING THE FABRIC OF EDUCATION</p>
+    </div>
+  </header>
+
+  <section class="story-section">
+    <div class="story-grid">
+      <div class="story-text" #animItem>
+        <div class="badge">THE ORIGIN</div>
+        <h2>Beyond <span class="highlight">Textbooks</span></h2>
+        <p>
+          For over a century, students have been forced to visualize complex 3D concepts from 2D static pages. 
+          We asked ourselves: <strong>Why read about gravity when you can experience it?</strong>
+        </p>
+        <p>
+          Our platform bridges the gap between abstract theory and tangible reality using state-of-the-art XR technology.
+        </p>
+      </div>
+      
+      <div class="story-visual" #animItem>
+        <div class="hologram-container">
+          <div class="ring outer"></div>
+          <div class="ring inner"></div>
+          <div class="core-icon">XR</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-bar" #animItem>
+    <div class="stat-item" *ngFor="let stat of stats">
+      <div class="stat-value">{{ stat.value }}</div>
+      <div class="stat-label">{{ stat.label }}</div>
+    </div>
+  </section>
+
+  <section class="values-section">
+    <div class="section-header" #animItem>
+      <h2>Core Protocols</h2>
+      <p>The pillars of our technology.</p>
+    </div>
+    
+    <div class="values-grid">
+      <div class="value-card" *ngFor="let val of values; let i = index" #animItem [style.transition-delay]="i * 100 + 'ms'">
+        <div class="card-glow"></div>
+        <div class="card-number">0{{ i + 1 }}</div>
+        <h3>{{ val.title }}</h3>
+        <p>{{ val.desc }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="roadmap-section">
+    <h2 class="section-header-text" #animItem>System Roadmap</h2>
+    
+    <div class="timeline-container">
+      <div class="center-line"></div>
+      
+      <div class="timeline-item" *ngFor="let item of timeline; let isOdd = odd" [class.left-side]="!isOdd" [class.right-side]="isOdd" #animItem>
+        <div class="dot"></div>
+        <div class="content">
+          <span class="year">{{ item.year }}</span>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.desc }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote-section" #animItem>
+    <div class="quote-box">
+      <blockquote>
+        "The best way to predict the future is to <span class="text-gradient">simulate it.</span>"
+      </blockquote>
+    </div>
+  </section>
+
+</main>

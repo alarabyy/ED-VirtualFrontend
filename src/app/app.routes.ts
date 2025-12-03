@@ -21,6 +21,10 @@ export const routes: Routes = [
         path: 'about',
         loadComponent: () => import('./pages/Public/pages/about/about').then(m => m.About)
       },
+      {
+        path: 'about',
+        loadComponent: () => import('./pages/Public/pages/about/about').then(m => m.About)
+      },
 
       // --- Authentication Pages ---
       {
@@ -97,20 +101,7 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/Dashboard/pages/Roles/role-form/role-form').then(m => m.RoleFormComponent)
       },
 
-      // --- RSS Feed Management ---
-      {
-        path: 'rss',
-        loadComponent: () => import('./pages/Dashboard/pages/RssLinks/pages/rss-list/rss-list').then(m => m.RssListComponent)
-      },
-      {
-        path: 'rss/create',
-        loadComponent: () => import('./pages/Dashboard/pages/RssLinks/pages/rss-form/rss-form').then(m => m.RssFormComponent)
-      },
-      {
-        // We rely on history.state for data here
-        path: 'rss/edit', 
-        loadComponent: () => import('./pages/Dashboard/pages/RssLinks/pages/rss-form/rss-form').then(m => m.RssFormComponent)
-      }
+
     ]
   },
 

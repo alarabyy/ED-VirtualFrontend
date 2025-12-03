@@ -1,0 +1,407 @@
+// --- VARIABLES ---
+$bg-color: #050505;
+$text-primary: #ffffff;
+$text-muted: #94a3b8;
+$accent-cyan: #00f3ff;   // Neon Blue
+$accent-purple: #bc13fe; // Neon Purple
+$border-light: rgba(255, 255, 255, 0.1);
+
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;600&display=swap');
+
+:host {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  background-color: $bg-color;
+  color: $text-primary;
+  overflow-x: hidden;
+}
+
+// --- GLOBAL STYLES ---
+h1, h2, h3, .year, .stat-value, .badge, .card-number {
+  font-family: 'Rajdhani', sans-serif;
+  text-transform: uppercase;
+}
+
+// Animation Class (Added by TS)
+.visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  filter: blur(0) !important;
+}
+
+// Background Grid Pattern
+.cyber-grid-bg {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background-image: 
+    linear-gradient($border-light 1px, transparent 1px),
+    linear-gradient(90deg, $border-light 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.15;
+  z-index: -1;
+  pointer-events: none;
+}
+
+// --- HEADER SECTION ---
+.about-header {
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  background: radial-gradient(circle at center, rgba($accent-purple, 0.1), transparent 70%);
+
+  .header-content {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 1s ease-out;
+  }
+
+  .separator-line {
+    width: 60px;
+    height: 4px;
+    background: $accent-cyan;
+    margin: 1rem auto;
+    box-shadow: 0 0 10px $accent-cyan;
+  }
+
+  .subtitle {
+    letter-spacing: 4px;
+    color: $text-muted;
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
+}
+
+// Glitch Effect Keyframes
+.glitch {
+  font-size: 5rem;
+  font-weight: 800;
+  position: relative;
+  color: $text-primary;
+  
+  &::before, &::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: $bg-color;
+  }
+  &::before {
+    left: 2px;
+    text-shadow: -2px 0 $accent-cyan;
+    clip: rect(24px, 550px, 90px, 0);
+    animation: glitch-anim-2 3s infinite linear alternate-reverse;
+  }
+  &::after {
+    left: -2px;
+    text-shadow: -2px 0 $accent-purple;
+    clip: rect(85px, 550px, 140px, 0);
+    animation: glitch-anim 2.5s infinite linear alternate-reverse;
+  }
+}
+
+@keyframes glitch-anim {
+  0% { clip: rect(10px, 9999px, 80px, 0); }
+  20% { clip: rect(80px, 9999px, 10px, 0); }
+  100% { clip: rect(40px, 9999px, 120px, 0); }
+}
+@keyframes glitch-anim-2 {
+  0% { clip: rect(90px, 9999px, 20px, 0); }
+  100% { clip: rect(10px, 9999px, 100px, 0); }
+}
+
+// --- STORY SECTION ---
+.story-section {
+  padding: 6rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; // Desktop: Side by side
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .story-text, .story-visual {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 0.8s ease-out;
+  }
+
+  .badge {
+    color: $accent-cyan;
+    border: 1px solid $accent-cyan;
+    display: inline-block;
+    padding: 4px 12px;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    .highlight { color: $accent-purple; }
+  }
+
+  p {
+    color: $text-muted;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    strong { color: $text-primary; }
+  }
+}
+
+// Hologram Animation
+.hologram-container {
+  width: 300px; height: 300px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba($accent-cyan, 0.3);
+    &.outer { width: 100%; height: 100%; animation: spin 10s linear infinite; border-top-color: $accent-cyan; }
+    &.inner { width: 70%; height: 70%; animation: spin 6s linear infinite reverse; border-bottom-color: $accent-purple; }
+  }
+
+  .core-icon {
+    font-size: 3rem;
+    font-weight: 800;
+    color: $text-primary;
+    text-shadow: 0 0 20px $accent-cyan;
+    animation: pulse 2s infinite ease-in-out;
+  }
+}
+@keyframes spin { 100% { transform: rotate(360deg); } }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+// --- STATS BAR ---
+.stats-bar {
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  border-y: 1px solid $border-light;
+  padding: 3rem 1rem;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap; // Allows wrapping on mobile
+  gap: 2rem;
+  opacity: 0;
+  transition: 0.8s;
+
+  .stat-item {
+    text-align: center;
+    min-width: 150px;
+  }
+
+  .stat-value {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(to bottom, #fff, #888);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .stat-label { color: $accent-cyan; letter-spacing: 1px; font-size: 0.9rem; }
+}
+
+// --- VALUES SECTION ---
+.values-section {
+  padding: 6rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  .section-header { text-align: center; margin-bottom: 4rem; opacity: 0; transition: 0.8s; }
+  h2 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+  p { color: $text-muted; }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); // Responsive Grid
+    gap: 2rem;
+  }
+}
+
+.value-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid $border-light;
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.5s ease;
+
+  &:hover {
+    border-color: $accent-cyan;
+    transform: translateY(-5px) !important; // Override animation lock
+    background: rgba(255,255,255,0.05);
+    .card-number { color: $accent-cyan; }
+  }
+
+  .card-number {
+    font-size: 3rem;
+    color: rgba(255,255,255,0.05);
+    position: absolute;
+    top: 1rem; right: 1.5rem;
+    transition: 0.3s;
+  }
+
+  h3 { font-size: 1.4rem; margin-bottom: 1rem; margin-top: 1.5rem; }
+  p { color: $text-muted; line-height: 1.6; }
+}
+
+// --- ROADMAP (TIMELINE) ---
+.roadmap-section {
+  padding: 6rem 2rem;
+  position: relative;
+  overflow: hidden;
+
+  .section-header-text { text-align: center; font-size: 2.5rem; margin-bottom: 4rem; opacity: 0; transition: 0.8s; }
+
+  .timeline-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    padding: 2rem 0;
+  }
+
+  .center-line {
+    position: absolute;
+    left: 50%; top: 0; bottom: 0; width: 2px;
+    background: linear-gradient(to bottom, transparent, $accent-purple, transparent);
+    transform: translateX(-50%);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 4rem;
+    width: 50%; // Occupy half width
+    opacity: 0;
+    transition: 0.8s;
+
+    .content {
+      padding: 1.5rem;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid $border-light;
+      border-radius: 8px;
+      position: relative;
+      
+      .year { color: $accent-cyan; font-size: 1.5rem; display: block; margin-bottom: 0.5rem; font-weight: 700; }
+      h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+      p { color: $text-muted; font-size: 0.95rem; line-height: 1.5; }
+    }
+
+    .dot {
+      width: 16px; height: 16px;
+      background: $bg-color;
+      border: 2px solid $accent-purple;
+      border-radius: 50%;
+      position: absolute;
+      top: 20px;
+      z-index: 2;
+      box-shadow: 0 0 15px $accent-purple;
+    }
+  }
+
+  // Desktop Logic: Alternating Sides
+  .left-side {
+    left: 0;
+    padding-right: 3rem;
+    text-align: right;
+    transform: translateX(-30px);
+    .dot { right: -9px; } // Center on line
+  }
+
+  .right-side {
+    left: 50%;
+    padding-left: 3rem;
+    text-align: left;
+    transform: translateX(30px);
+    .dot { left: -9px; } // Center on line
+  }
+}
+
+// --- FOOTER QUOTE ---
+.quote-section {
+  padding: 6rem 2rem;
+  text-align: center;
+  opacity: 0;
+  transition: 1s;
+
+  blockquote {
+    font-size: 2rem;
+    font-family: 'Rajdhani', sans-serif;
+    color: $text-primary;
+    max-width: 800px;
+    margin: 0 auto;
+    
+    .text-gradient {
+      background: linear-gradient(90deg, $accent-cyan, $accent-purple);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+}
+
+// --- MOBILE RESPONSIVENESS (Media Queries) ---
+@media (max-width: 768px) {
+  
+  // 1. Header Adjustments
+  .about-header {
+    height: 50vh;
+    .glitch { font-size: 2.8rem; } // Smaller font
+    .subtitle { font-size: 0.8rem; }
+  }
+
+  // 2. Story Section Stacking
+  .story-grid {
+    grid-template-columns: 1fr; // Stack vertically
+    text-align: center;
+    .story-visual { order: -1; margin-bottom: 2rem; } // Image on top
+  }
+
+  // 3. Stats Adjustment
+  .stats-bar {
+    gap: 3rem;
+    .stat-item { width: 40%; } // 2 items per row
+  }
+
+  // 4. TIMELINE TRANSFORMATION (Complex Part)
+  .roadmap-section {
+    .center-line {
+      left: 20px; // Move line to the left edge
+      transform: none;
+    }
+
+    .timeline-item {
+      width: 100%; // Full width
+      left: 0 !important; // Reset positioning
+      padding: 0 0 0 50px !important; // Add space for line
+      text-align: left !important; // All text left aligned
+      margin-bottom: 3rem;
+
+      .dot {
+        left: 12px !important; // Align dot with new line position
+        right: auto !important;
+      }
+      
+      .content {
+        background: transparent; // Cleaner look on mobile
+        border: none;
+        padding: 0;
+        border-bottom: 1px solid $border-light; // Separator instead of box
+        padding-bottom: 1rem;
+      }
+    }
+  }
+}

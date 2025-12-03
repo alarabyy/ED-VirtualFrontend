@@ -1,56 +1,84 @@
-<footer class="footer-section" style="color: aliceblue;">
+<footer class="footer-section">
+  <div class="footer-line"></div>
+
   <div class="container">
-    <div class="row gy-5"> <div class="col-lg-4 col-md-6 text-center text-md-start">
-        <div class="footer-brand mb-3">
-          <h2 class="fw-bold text-uppercase tracking-wider">NYC<span class="highlight">360</span></h2>
+    <div class="row gy-5">
+      
+      <div class="col-lg-4 col-md-6 text-center text-md-start">
+        <div class="footer-brand mb-4">
+          <h2 class="brand-text">ED-V<span class="highlight">360</span></h2>
+          <span class="brand-tagline">FUTURE OF EDUCATION</span>
         </div>
-        <p class="thighlight description" >
-          Discover the world from a new perspective. We create immersive experiences and virtual tours that bring reality to your screen.
+        <p class="description">
+          Bridging the gap between abstract theory and reality. We create immersive VR/AR ecosystems that transform how the world learns.
         </p>
+        
         <div class="social-links mt-4 d-flex justify-content-center justify-content-md-start">
-          <a href="#" class="social-btn"><i class="bi bi-facebook"></i></a>
-          <a href="#" class="social-btn"><i class="bi bi-twitter-x"></i></a> <a href="#" class="social-btn"><i class="bi bi-instagram"></i></a>
-          <a href="#" class="social-btn"><i class="bi bi-linkedin"></i></a>
+          <a href="#" class="social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="social-btn" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" class="social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="social-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
         </div>
       </div>
 
       <div class="col-lg-3 col-md-6 text-center text-md-start">
-        <h5 class="footer-heading mb-4">Explore</h5>
+        <h5 class="footer-heading">Explore</h5>
         <ul class="list-unstyled footer-links">
-          <li><a routerLink="/" routerLinkActive="active"><i class="bi bi-chevron-right me-2"></i>Home</a></li>
-          <li><a routerLink="/about" routerLinkActive="active"><i class="bi bi-chevron-right me-2"></i>About Us</a></li>
-          <li><a routerLink="/projects" routerLinkActive="active"><i class="bi bi-chevron-right me-2"></i>Our Projects</a></li>
-          <li><a routerLink="/contact" routerLinkActive="active"><i class="bi bi-chevron-right me-2"></i>Contact</a></li>
+          <li><a routerLink="/" routerLinkActive="active"><i class="bi bi-arrow-right-short"></i> Home</a></li>
+          <li><a routerLink="/about" routerLinkActive="active"><i class="bi bi-arrow-right-short"></i> About Us</a></li>
+          <li><a routerLink="/projects" routerLinkActive="active"><i class="bi bi-arrow-right-short"></i> Our Tech</a></li>
+          <li><a routerLink="/contact" routerLinkActive="active"><i class="bi bi-arrow-right-short"></i> Contact</a></li>
         </ul>
       </div>
 
       <div class="col-lg-5 col-md-12 text-center text-md-start">
-        <h5 class="footer-heading mb-4">Get in Touch</h5>
-        <div class="contact-item mb-3">
-          <i class="bi bi-geo-alt-fill highlight me-2"></i>
-          <span>123 Innovation Dr, New York, NY 10001</span>
-        </div>
-        <div class="contact-item mb-3">
-          <i class="bi bi-envelope-fill highlight me-2"></i>
-          <a href="mailto:info@nyc360.com" class="contact-link">info@nyc360.com</a>
-        </div>
-        <div class="contact-item">
-          <i class="bi bi-telephone-fill highlight me-2"></i>
-          <a href="tel:+1234567890" class="contact-link">+1 234 567 890</a>
+        <h5 class="footer-heading">Get in Touch</h5>
+        <div class="contact-wrapper">
+          
+          <div class="contact-item">
+            <div class="icon-box"><i class="bi bi-geo-alt-fill"></i></div>
+            <div class="info">
+              <span>Headquarters</span>
+              <p>Cairo, Egypt - Smart Village, B12</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="icon-box"><i class="bi bi-envelope-fill"></i></div>
+            <div class="info">
+              <span>Email Us</span>
+              <a href="mailto:info@ed-virual.com">info@ed-virual.com</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="icon-box"><i class="bi bi-telephone-fill"></i></div>
+            <div class="info">
+              <span>Call Us</span>
+              <a href="tel:+1234567890">+20 123 456 7890</a>
+            </div>
+          </div>
+
         </div>
       </div>
 
     </div>
 
-    <div class="footer-bottom mt-5 pt-4">
+    <div class="footer-bottom">
       <div class="row align-items-center">
         <div class="col-md-6 text-center text-md-start">
-          <p class="mb-0">&copy; {{ currentYear }} <span class="text-white fw-bold">NYC360</span>. All Rights Reserved.</p>
+          <p class="copyright mb-0">
+            &copy; {{ currentYear }} <span class="highlight">Ed-Virtual</span>. All Rights Reserved.
+          </p>
         </div>
-        <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
-          <a href="#" class="bottom-link">Privacy Policy</a>
-          <span class="mx-2 text-muted">|</span>
-          <a href="#" class="bottom-link">Terms of Service</a>
+        <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+          <div class="legal-links">
+            <a href="#">Privacy Policy</a>
+            <span class="separator">•</span>
+            <a href="#">Terms of Service</a>
+            <span class="separator">•</span>
+            <a href="#">Cookies</a>
+          </div>
         </div>
       </div>
     </div>

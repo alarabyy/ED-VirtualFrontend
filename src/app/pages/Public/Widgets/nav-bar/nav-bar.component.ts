@@ -1,8 +1,8 @@
-import { Component, OnInit, inject, OnDestroy } from '@angular/core';
+import { Component, OnInit, inject, OnDestroy, HostListener } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AuthService } from '../../Auth/Service/auth';
+import { AuthService } from '../../Auth/Service/auth'; // تأكد من المسار
 
 @Component({
   selector: 'app-nav-bar',
@@ -20,9 +20,9 @@ export class NavBarComponent implements OnInit, OnDestroy {
   currentDate = new Date();
   isLoggedIn = false;
   currentUsername: string | null = null;
+  isScrolled = false; 
 
-  // Permissions Flags for HTML
-
+  // Permissions Flags
   canViewDashboard = false;
   
   private userSub!: Subscription;
@@ -33,8 +33,6 @@ export class NavBarComponent implements OnInit, OnDestroy {
       
       if (user) {
         this.currentUsername = user.username || user.unique_name || user.email;
-
-        // Check Permissions Dynamically
         this.canViewDashboard = this.authService.hasPermission('Permissions.Dashboard.View')
       } else {
         this.resetPermissions();
@@ -43,8 +41,8 @@ export class NavBarComponent implements OnInit, OnDestroy {
   }
 
   resetPermissions() {
-
     this.currentUsername = null;
+    this.canViewDashboard = false;
   }
 
   toggleMenu() { this.isMenuOpen = !this.isMenuOpen; }
@@ -52,6 +50,12 @@ export class NavBarComponent implements OnInit, OnDestroy {
   logout() {
     this.authService.logout();
     this.isMenuOpen = false;
+  }
+
+  // إضافة تأثير عند عمل Scroll للصفحة
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.isScrolled = window.scrollY > 20;
   }
 
   ngOnDestroy() {

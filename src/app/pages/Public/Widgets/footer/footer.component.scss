@@ -1,143 +1,233 @@
-// متغيرات الألوان لسهولة التعديل
-$bg-color: #111111;       // خلفية داكنة جداً
-$text-color: #b0b0b0;     // لون نص رمادي فاتح
-$accent-color: #FFD700;   // اللون الذهبي المميز
-$hover-bg: #222222;       // لون الخلفية عند التحويم
+// --- Variables ---
+$bg-color: #080808;           // Deep Black
+$bg-secondary: #111111;       // Slightly lighter black
+$text-main: #b0b0b0;          // Soft Grey
+$text-white: #ffffff;
+$accent-color: #FFD700;       // Gold (As requested)
+$accent-hover: #ffea70;       // Lighter Gold
+$border-color: rgba(255, 255, 255, 0.08);
+
+// Import Fonts (Ensure you have this in styles.scss or index.html)
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Inter:wght@300;400;600&display=swap');
+
+:host {
+  display: block;
+}
 
 .footer-section {
   background-color: $bg-color;
-  color: $text-color;
-  padding: 80px 0 30px; // مسافات واسعة تعطي شعور بالفخامة
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; // خط نظيف
-  border-top: 3px solid $accent-color; // خط علوي ذهبي جمالي
+  color: $text-main;
+  padding: 80px 0 0;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid $border-color;
 }
 
+// Decorative Top Line
+.footer-line {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 3px;
+  background: linear-gradient(90deg, transparent, $accent-color, transparent);
+  box-shadow: 0 0 15px rgba($accent-color, 0.5);
+}
+
+// --- Brand Section ---
 .footer-brand {
-  h2 {
-    color: #fff;
+  .brand-text {
+    font-family: 'Rajdhani', sans-serif;
+    color: $text-white;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0;
     letter-spacing: 2px;
-    font-size: 2rem;
   }
+  
   .highlight {
     color: $accent-color;
   }
-}
 
-.footer-heading {
-  color: #fff;
-  font-weight: 700;
-  position: relative;
-  display: inline-block;
-  
-  // خط صغير تحت العناوين
-  &::after {
-    content: '';
+  .brand-tagline {
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+    color: $accent-color;
+    text-transform: uppercase;
     display: block;
-    width: 40px;
-    height: 2px;
-    background: $accent-color;
-    margin-top: 10px;
-    transition: width 0.3s;
-  }
-  
-  &:hover::after {
-    width: 100%; // تأثير تمدد الخط عند الوقوف عليه
+    margin-top: -5px;
+    opacity: 0.8;
   }
 }
 
 .description {
+  margin-top: 1.5rem;
   line-height: 1.8;
   font-size: 0.95rem;
-  color: #fff;
+  max-width: 350px;
+  
+  // Center description on mobile
+  @media (max-width: 768px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
-// روابط القائمة السريعة
+// --- Headings ---
+.footer-heading {
+  color: $text-white;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -8px;
+    width: 40px; height: 2px;
+    background: $accent-color;
+    transition: 0.3s;
+  }
+
+  // Center underline on mobile
+  @media (max-width: 768px) {
+    &::after { left: 50%; transform: translateX(-50%); }
+  }
+}
+
+// --- Navigation Links ---
 .footer-links {
-  li {
-    margin-bottom: 12px;
-  }
-  
+  li { margin-bottom: 12px; }
+
   a {
-    color: $text-color;
+    color: $text-main;
     text-decoration: none;
+    font-size: 1rem;
     transition: all 0.3s ease;
-    display: inline-block;
-
-    &:hover {
-      color: $accent-color;
-      transform: translateX(5px); // حركة بسيطة لليمين
-    }
-    
-    i {
-      font-size: 0.8rem;
-      color: $accent-color;
-    }
-  }
-}
-
-// أزرار السوشيال ميديا
-.social-links {
-  gap: 15px;
-  
-  .social-btn {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.05);
-    color: #fff;
+    
+    // Adjust for mobile centering
+    @media (max-width: 768px) { justify-content: center; }
+
+    i {
+      color: $accent-color;
+      margin-right: 8px;
+      font-size: 1.2rem;
+      transition: 0.3s;
+    }
+
+    &:hover {
+      color: $text-white;
+      padding-left: 8px; // Slide effect
+      
+      i { margin-right: 12px; opacity: 1; }
+    }
+  }
+}
+
+// --- Social Icons ---
+.social-links {
+  gap: 15px;
+
+  .social-btn {
+    width: 45px; height: 45px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(255,255,255,0.05);
+    color: $text-white;
     border-radius: 50%;
     text-decoration: none;
+    font-size: 1.1rem;
     transition: all 0.3s ease;
     border: 1px solid transparent;
 
     &:hover {
       background: $accent-color;
-      color: #000; // النص يصبح أسود عند التحويم
-      transform: translateY(-3px); // يرتفع للأعلى قليلاً
-      box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+      color: #000; // Black icon on gold bg
+      transform: translateY(-5px);
+      box-shadow: 0 5px 20px rgba($accent-color, 0.4);
     }
   }
 }
 
-// روابط الاتصال
+// --- Contact Items ---
+.contact-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
 .contact-item {
   display: flex;
   align-items: center;
-  justify-content: center; // افتراضي للموبايل
-  
-  @media (min-width: 768px) {
-    justify-content: flex-start; // بداية السطر للديسك توب
+  gap: 1rem;
+
+  // Center on mobile
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
   }
 
-  .highlight {
+  .icon-box {
+    width: 40px; height: 40px;
+    background: rgba($accent-color, 0.1);
     color: $accent-color;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
   }
-  
-  .contact-link {
-    color: $text-color;
-    text-decoration: none;
-    transition: color 0.3s;
-    
-    &:hover {
-      color: #fff;
+
+  .info {
+    span {
+      display: block;
+      font-size: 0.8rem;
+      color: rgba($text-main, 0.6);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
     }
+
+    p, a {
+      margin: 0;
+      color: $text-white;
+      font-weight: 500;
+      text-decoration: none;
+      transition: 0.3s;
+      font-size: 1rem;
+    }
+
+    a:hover { color: $accent-color; }
   }
 }
 
-// الجزء السفلي (Copyright)
+// --- Footer Bottom ---
 .footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 5rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid $border-color;
   font-size: 0.9rem;
-  
-  .bottom-link {
-    color: $text-color;
-    text-decoration: none;
-    transition: color 0.3s;
-    
-    &:hover {
-      color: $accent-color;
+
+  .highlight { color: $accent-color; font-weight: bold; }
+
+  .legal-links {
+    a {
+      color: $text-main;
+      text-decoration: none;
+      transition: 0.3s;
+      &:hover { color: $accent-color; }
     }
+    
+    .separator { margin: 0 10px; color: rgba($text-main, 0.3); }
   }
+}
+
+// --- Global Responsive Tweaks ---
+@media (max-width: 768px) {
+  .footer-section { padding-top: 60px; }
+  .footer-bottom { margin-top: 3rem; }
+  .contact-wrapper { gap: 2rem; }
 }

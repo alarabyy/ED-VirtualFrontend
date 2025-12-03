@@ -1,157 +1,122 @@
-<div class="portal-wrapper">
-
-  <div class="top-bar">
-    <div class="container d-flex-between">
-      <div class="date-weather">
-        <span>{{ currentDate | date:'fullDate' }}</span>
-        <span class="sep">|</span>
-        <span><i class="bi bi-cloud-sun"></i> 12°C NYC</span>
-        <span class="sep">|</span>
-        <span class="text-gold">S&P 500 ▲ 1.2%</span>
-      </div>
-      <div class="user-actions">
-        <a href="#">Subscribe</a>
-        <a href="#">Login</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="breaking-strip">
-    <div class="label">BREAKING</div>
-    <div class="ticker-track">
-      <span>🚨 Federal Reserve keeps interest rates unchanged</span>
-      <span>•</span>
-      <span>🗳️ Election polls show tight race in key states</span>
-      <span>•</span>
-      <span>💊 New medical breakthrough in cancer research announced in Boston</span>
-    </div>
-  </div>
-
-  <section class="hero-grid container">
-    <div class="main-story" [style.backgroundImage]="'url(' + heroMain.image + ')'">
-      <div class="overlay"></div>
-      <div class="content">
-        <span class="badge-gold">{{ heroMain.category }}</span>
-        <h1>{{ heroMain.title }}</h1>
-        <p>{{ heroMain.summary }}</p>
-      </div>
-    </div>
-
-    <div class="side-stories">
-      @for (sub of heroSub; track sub.id) {
-        <div class="sub-story" [style.backgroundImage]="'url(' + sub.image + ')'">
-          <div class="overlay"></div>
-          <div class="content">
-            <span class="badge-sm">{{ sub.category }}</span>
-            <h3>{{ sub.title }}</h3>
-          </div>
-        </div>
-      }
-    </div>
-  </section>
-
-  <section class="dense-section container">
-    
-    <div class="col-news-feed">
-      <div class="header-sm">
-        <h4><i class="bi bi-lightning-charge-fill text-gold"></i> Live Wire</h4>
-      </div>
-      <div class="vertical-scroll-container">
-        <div class="scroll-track">
-          @for (item of verticalNews; track item.time) {
-            <div class="feed-item">
-              <span class="time">{{ item.time }}</span>
-              <p>{{ item.text }}</p>
-            </div>
-          }
-           @for (item of verticalNews; track item.time) {
-            <div class="feed-item">
-              <span class="time">{{ item.time }}</span>
-              <p>{{ item.text }}</p>
-            </div>
-          }
-        </div>
-      </div>
-    </div>
-
-    <div class="col-events">
-      <div class="header-sm">
-        <h4><i class="bi bi-calendar-event"></i> NYC Agenda</h4>
-      </div>
-      <div class="events-list">
-        @for (event of upcomingEvents; track event.title) {
-          <div class="event-card">
-            <div class="date-box">
-              <span class="month">{{ event.day.split(' ')[0] }}</span>
-              <span class="day">{{ event.day.split(' ')[1] }}</span>
-            </div>
-            <div class="event-details">
-              <h5>{{ event.title }}</h5>
-              <span class="loc"><i class="bi bi-geo-alt"></i> {{ event.location }}</span>
-            </div>
-            <button class="btn-xs">Book</button>
-          </div>
-        }
-      </div>
-    </div>
-
-    <div class="col-ad">
-      <div class="ad-box">
-        <span class="ad-label">Sponsored</span>
-        <h4>Invest in Future</h4>
-        <p>Join the world's leading trading platform today.</p>
-        <button class="btn-gold-full">Open Account</button>
-      </div>
-      <div class="market-mini">
-        <div class="row">
-          <span>NASDAQ</span> <span class="green">+0.8%</span>
-        </div>
-        <div class="row">
-          <span>GOLD</span> <span class="red">-0.2%</span>
-        </div>
-      </div>
-    </div>
-
-  </section>
-
-  <section class="media-strip">
-    <div class="container">
-      <div class="strip-header">
-        <h2>NYC360 <span class="thin">TV</span></h2>
-        <a href="#">Watch All <i class="bi bi-arrow-right"></i></a>
-      </div>
-      <div class="video-grid">
-        @for (vid of videos; track vid.id) {
-          <div class="video-card">
-            <div class="thumb" [style.backgroundImage]="'url(' + vid.thumb + ')'">
-              <div class="play-btn"><i class="bi bi-play-fill"></i></div>
-              <span class="duration">{{ vid.duration }}</span>
-            </div>
-            <h4>{{ vid.title }}</h4>
-          </div>
-        }
-      </div>
-    </div>
-  </section>
-
-  <section class="opinion-section container">
-    <div class="section-title">
-      <h2>Opinion</h2>
-      <div class="line"></div>
-    </div>
-    <div class="opinion-grid">
-      @for (op of opinions; track op.author) {
-        <div class="op-card">
-          <img [src]="op.avatar" class="op-avatar">
-          <div class="op-text">
-            <span class="author-name">{{ op.author }}</span>
-            <h3 class="op-title">{{ op.title }}</h3>
-          </div>
-        </div>
-      }
-    </div>
-  </section>
-
+<main class="home-container">
   
+  <section class="hero-section">
+    <div class="hero-bg-overlay"></div>
+    <div class="content-wrapper">
+      <div class="hero-text" #animItem>
+        <span class="badge">V 2.0 RELEASED</span>
+        <h1>Beyond <br> <span class="gradient-text">Reality.</span></h1>
+        <p>
+          Transform boring textbooks into living, breathing worlds. 
+          The ultimate educational platform powered by VR, AR, and MR.
+        </p>
+        <div class="cta-group">
+          <button class="btn-primary">GET STARTED</button>
+          <button class="btn-secondary">WATCH DEMO <span class="play-icon">▶</span></button>
+        </div>
+      </div>
+      
+      <div class="hero-visual" #animItem>
+        <div class="floating-cube">
+          <div class="face front">VR</div>
+          <div class="face back">AR</div>
+          <div class="face right">XR</div>
+          <div class="face left">AI</div>
+          <div class="face top"></div>
+          <div class="face bottom"></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-</div>
+  <div class="tech-strip">
+    <div class="strip-track">
+      <span>SPATIAL COMPUTING</span> • 
+      <span>HAND TRACKING</span> • 
+      <span>VOICE COMMANDS</span> • 
+      <span>REAL-TIME RENDERING</span> • 
+      <span>MULTI-USER SUPPORT</span> • 
+      <span>SPATIAL COMPUTING</span> </div>
+  </div>
+
+  <section class="features-section">
+    <div class="section-header" #animItem>
+      <h2>The Future of Learning</h2>
+      <p>Choose your dimension.</p>
+    </div>
+
+    <div class="cards-grid">
+      <div class="glass-card" *ngFor="let feature of features" #animItem>
+        <div class="icon-box">
+          <svg *ngIf="feature.icon === 'vr'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 8v13H3V8M1 3h22v5H1V3zm0 5h22M10 12h4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <svg *ngIf="feature.icon === 'ar'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h4v4H4V4zm12 12h4v4h-4v-4zM4 16h4v4H4v-4zm12-12h4v4h-4V4zM2 12h20" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <svg *ngIf="feature.icon === 'mr'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M8 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>{{ feature.title }}</h3>
+        <p>{{ feature.desc }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="transform-section" #animItem>
+    <div class="transform-grid">
+      <div class="text-side">
+        <h2>Scan. <span class="highlight">Process.</span> Immerse.</h2>
+        <ul class="steps-list">
+          <li>
+            <span class="step-num">01</span>
+            <div>
+              <h4>Upload Material</h4>
+              <p>Scan any textbook page or upload a PDF document.</p>
+            </div>
+          </li>
+          <li>
+            <span class="step-num">02</span>
+            <div>
+              <h4>AI Processing</h4>
+              <p>Our Neural Engine converts text into 3D assets instantly.</p>
+            </div>
+          </li>
+          <li>
+            <span class="step-num">03</span>
+            <div>
+              <h4>Dive In</h4>
+              <p>Put on your headset and step inside the knowledge.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="visual-side">
+        <div class="scanner-effect">
+          <div class="scan-line"></div>
+          <div class="doc-icon">DATA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="partners-section" #animItem>
+    <div class="ad-content">
+      <div class="ad-badge">ECOSYSTEM PARTNERS</div>
+      <h2>Built with Industry Leaders</h2>
+      <p>Optimized for the next generation of hardware.</p>
+      
+      <div class="partners-grid">
+        <div class="partner-logo" *ngFor="let p of partners">{{ p }}</div>
+      </div>
+
+      <div class="final-cta">
+        <h3>Join the Revolution</h3>
+        <button class="btn-glow">DOWNLOAD APP</button>
+      </div>
+    </div>
+  </section>
+
+</main>
