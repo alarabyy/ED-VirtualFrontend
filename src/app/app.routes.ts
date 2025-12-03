@@ -22,15 +22,21 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/Public/pages/about/about').then(m => m.About)
       },
       {
-        path: 'about',
-        loadComponent: () => import('./pages/Public/pages/about/about').then(m => m.About)
+        path: 'our-tech',
+        loadComponent: () => import('./pages/Public/pages/our-tech/our-tech').then(m => m.OurTechComponent)
+      },
+      {
+        path: 'Contact',
+        loadComponent: () => import('./pages/Public/pages/contact/contact').then(m => m.Contact)
       },
 
-      // --- Authentication Pages ---
+
+
       {
         path: 'Login',
         loadComponent: () => import('./pages/Public/Auth/pages/login/login').then(m => m.LoginComponent)
       },
+
       { 
         path: 'verify-otp', 
         loadComponent: () => import('./pages/Public/Auth/pages/verify-otp/verify-otp').then(m => m.VerifyOtpComponent) 

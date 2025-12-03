@@ -1,0 +1,54 @@
+<section class="tech-container">
+  
+  <header class="tech-hero" #animItem>
+    <div class="hero-overlay"></div>
+    <div class="content">
+      <div class="label-box">THE COLLECTIVE</div>
+      <h1>UNIFIED <span class="highlight">MASTERY</span></h1>
+      <p class="mission-text">
+        We are not just developers. We are a multidisciplinary legion. 
+        From <strong>Design</strong> to <strong>Deployment</strong>, our experts cover every inch of the digital landscape.
+      </p>
+    </div>
+  </header>
+
+  <div class="matrix-container">
+    <div class="section-label" #animItem>OPERATIONAL DIVISIONS</div>
+    
+    <div class="grid-wrapper">
+      <div class="tech-card" *ngFor="let dept of departments" #animItem>
+        
+        <div class="card-header">
+          <span class="dept-id">{{ dept.id }}</span>
+          <i class="bi" [ngClass]="dept.icon"></i>
+        </div>
+        
+        <div class="card-body">
+          <h3>{{ dept.name }}</h3>
+          <div class="stack-line">{{ dept.stack }}</div>
+          <p>{{ dept.desc }}</p>
+        </div>
+
+        <div class="card-footer">
+          <div class="status-light"></div>
+          <span>ACTIVE SQUAD</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="authority-banner" #animItem>
+    <div class="banner-content">
+      <h2>ONE TEAM. <span class="gold">LIMITLESS POSSIBILITIES.</span></h2>
+      <div class="badges">
+        <span>FULL STACK</span>
+        <span>•</span>
+        <span>SECURE</span>
+        <span>•</span>
+        <span>SCALABLE</span>
+      </div>
+    </div>
+  </div>
+
+</section>

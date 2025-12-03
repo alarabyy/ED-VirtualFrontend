@@ -47,6 +47,8 @@
       <ul class="mobile-links">
         <li><a routerLink="/" (click)="toggleMenu()">HOME</a></li>
         <li><a routerLink="/about" (click)="toggleMenu()">About</a></li>
+        <li><a routerLink="/our-tech" (click)="toggleMenu()">our-tech</a></li>
+        <li><a routerLink="/Contact" (click)="toggleMenu()">Contact</a></li>
         
         <li *ngIf="isLoggedIn">
           <a [routerLink]="['/profile', currentUsername]" (click)="toggleMenu()" class="highlight-item">MY PROFILE</a>
@@ -77,8 +79,9 @@
     <ul class="sub-links">
       <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
       <li><a routerLink="/about" routerLinkActive="active">About Us</a></li>
-      <!-- <li><a routerLink="/projects" routerLinkActive="active">Projects</a></li> -->
-      
+        <li><a routerLink="/our-tech">our-tech</a></li>
+        <li><a routerLink="/Contact" >Contact</a></li>
+              
       <li *ngIf="canViewDashboard">
         <a routerLink="/admin/dashboard" routerLinkActive="active" class="highlight-link">
           <i class="bi bi-grid-fill me-1"></i> Dashboard

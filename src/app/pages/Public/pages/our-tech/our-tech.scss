@@ -1,0 +1,199 @@
+// --- Variables ---
+$bg-color: #050505;
+$panel-bg: #0a0a0a;
+$gold: #FFD700;
+$text: #ffffff;
+$text-muted: #888;
+$border: rgba(255, 255, 255, 0.08);
+
+:host {
+  display: block;
+  background-color: $bg-color;
+  min-height: 100vh;
+  padding-top: 80px;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+// Animation
+.visible { opacity: 1 !important; transform: translateY(0) !important; }
+
+// --- HERO SECTION ---
+.tech-hero {
+  position: relative;
+  padding: 6rem 2rem;
+  text-align: center;
+  background: radial-gradient(circle at 50% -20%, rgba($gold, 0.05), transparent 70%);
+  opacity: 0; transform: translateY(30px); transition: 0.8s;
+
+  .label-box {
+    display: inline-block;
+    border: 1px solid $gold;
+    color: $gold;
+    padding: 6px 16px;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    margin-bottom: 1.5rem;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+  }
+
+  h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 4.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1;
+    
+    .highlight { 
+      color: transparent; 
+      -webkit-text-stroke: 1px $text;
+      position: relative;
+      
+      &::after {
+        content: 'MASTERY'; position: absolute; left: 0; top: 0;
+        color: $gold; opacity: 0.3; filter: blur(5px);
+      }
+    }
+  }
+
+  .mission-text {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    color: $text-muted;
+    line-height: 1.8;
+    
+    strong { color: $text; font-weight: 600; }
+  }
+}
+
+// --- MATRIX GRID ---
+.matrix-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 4rem 20px;
+
+  .section-label {
+    color: $text-muted;
+    border-bottom: 1px solid $border;
+    padding-bottom: 10px;
+    margin-bottom: 3rem;
+    font-family: 'Rajdhani', sans-serif;
+    letter-spacing: 2px;
+    opacity: 0; transition: 0.8s;
+  }
+}
+
+.grid-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+// --- TECH CARD (Department Style) ---
+.tech-card {
+  background: $panel-bg;
+  border: 1px solid $border;
+  padding: 2.5rem;
+  position: relative;
+  transition: 0.4s;
+  opacity: 0; transform: translateY(30px);
+  display: flex; flex-direction: column; justify-content: space-between;
+
+  &:hover {
+    border-color: $gold;
+    transform: translateY(-5px) !important;
+    background: lighten($panel-bg, 2%);
+    
+    .card-header i { color: $gold; transform: scale(1.1); }
+    .status-light { background: $gold; box-shadow: 0 0 10px $gold; }
+  }
+
+  .card-header {
+    display: flex; justify-content: space-between; align-items: start;
+    margin-bottom: 2rem;
+
+    .dept-id {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 3rem;
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.05);
+      line-height: 1;
+    }
+
+    i {
+      font-size: 2rem;
+      color: $text-muted;
+      transition: 0.4s;
+    }
+  }
+
+  .card-body {
+    h3 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .stack-line {
+      color: $gold;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      letter-spacing: 0.5px;
+    }
+
+    p {
+      color: $text-muted;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+  }
+
+  .card-footer {
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 1rem;
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.75rem; letter-spacing: 1px; color: #666;
+
+    .status-light {
+      width: 6px; height: 6px;
+      background: #444; border-radius: 50%;
+      transition: 0.4s;
+    }
+  }
+}
+
+// --- FOOTER BANNER ---
+.authority-banner {
+  background: linear-gradient(90deg, #000, #111, #000);
+  border-top: 1px solid $border;
+  border-bottom: 1px solid $border;
+  padding: 4rem 0;
+  text-align: center;
+  margin-top: 4rem;
+  opacity: 0; transition: 1s;
+
+  h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    .gold { color: $gold; }
+  }
+
+  .badges {
+    color: $text-muted;
+    font-size: 1rem;
+    letter-spacing: 3px;
+    span { margin: 0 10px; }
+  }
+}
+
+// Mobile Response
+@media(max-width: 768px) {
+  .tech-hero h1 { font-size: 3rem; }
+  .grid-wrapper { grid-template-columns: 1fr; }
+}
