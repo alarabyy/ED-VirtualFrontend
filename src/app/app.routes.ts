@@ -106,7 +106,12 @@ export const routes: Routes = [
         path: 'roles/create',
         loadComponent: () => import('./pages/Dashboard/pages/Roles/role-form/role-form').then(m => m.RoleFormComponent)
       },
+      // --- device Management Routes ---
 
+      { 
+        path: 'devices',
+        loadComponent: () => import('./pages/Dashboard/pages/Devices/devices/devices').then(m => m.Devices)
+      },
 
     ]
   },
