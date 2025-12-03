@@ -110,11 +110,11 @@ $hover-bg: rgba(255, 255, 255, 0.05);
 .btn-login {
   color: $text-color;
   text-decoration: none;
-  font-weight: 600;
-  padding: 8px 16px;
+  font-weight: 500;
+  padding: 6px 10px;
   border-radius: 4px;
   transition: 0.3s;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
 
   &:hover {
     color: $accent-gold;
@@ -126,9 +126,9 @@ $hover-bg: rgba(255, 255, 255, 0.05);
   background: $accent-gradient;
   color: #000; // نص أسود لتباين عالي
   text-decoration: none;
-  padding: 10px 24px;
+  padding: 8px 15px;
   border-radius: 50px; // حواف دائرية كاملة
-  font-weight: 700;
+  font-weight: 500;
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
